@@ -1,101 +1,215 @@
-using Calculator;
 using NUnit.Framework;
 using System;
 using System.Windows.Forms;
+using form;
 
 [TestFixture]
-public class CalculTest
+public class CalculatorTests
 {
-    private Form1 _form;
+    private Form1 _calculator;
+    private Button _dummyButton;
+
+    private void SimulateButtonClick(string buttonText)
+    {
+        var button = new Button { Text = buttonText };
+        _calculator.button_click(button, EventArgs.Empty);
+    }
+
+    private void SimulateOperatorClick(string operation)
+    {
+        var button = new Button { Text = operation };
+        _calculator.operator_click(button, EventArgs.Empty);
+    }
+
+
+    [TearDownAttribute]
+    public void OneTimeS()
+    {
+        _calculator.Dispose();
+    }
+
+    [OneTimeTearDown]
+    public void OneTimeTearDown()
+    {
+        _dummyButton?.Dispose();
+    }
+
+
+    [OneTimeSetUp]
+    public void OneTimeSetup()
+    {
+        _dummyButton = new Button();
+    }
 
     [SetUp]
-    public void SetUp()
+    public void Setup()
     {
-        _form = new Form1();
-    }
-
-    [TearDown]
-    public void TearDown()
-    {
-        _form.Dispose();
+        _calculator = new Form1();
+        _calculator.button5_Click(_dummyButton, EventArgs.Empty);
     }
 
     [Test]
-    public void operator_click_ShouldReturnCorrectSum_WhenBothNumbersAreNonNegative()
+    public void InitialState_AllPropertiesHaveDefaultValues()
     {
-        _form.textBox_Result.Text = "5";
-        var button = new Button { Text = "+" };
+        Assert.Multiple(() =>
+        {
+            Assert.That(_calculator.textBox_Result.Text, Is.EqualTo("0"));
+            Assert.That(_calculator.resultValue, Is.EqualTo(0));
+            Assert.That(_calculator.operationPerformed, Is.Empty);
+            Assert.That(_calculator.isOperationPerformed, Is.False);
+        });
+    }
 
-        _form.operator_click(button, EventArgs.Empty);
-
-        Assert.That(_form.resultValue, Is.EqualTo(10));
-        Assert.That(_form.operationPerformed, Is.EqualTo("+"));
-        Assert.That(_form.isOperationPerformed);
+    [TestCase("1", "1")]
+    [TestCase("5", "5")]
+    [TestCase("6", "6")]
+    [TestCase("7", "7")]
+    [TestCase("8", "8")]
+    [TestCase("0", "0")]
+    [TestCase("3", "3")]
+    [TestCase("9", "9")]
+    [TestCase("2", "2")]
+    [TestCase("4", "4")]
+    [TestCase(",", ",")]
+    public void NumberButtonClick_SingleDigit_UpdatesDisplayCorrectly(string input, string expected)
+    {
+        SimulateButtonClick(input);
+        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo(expected));
+    }
+    [TestCase("+", "+")]
+    [TestCase("-", "-")]
+    [TestCase("/", "/")]
+    [TestCase("*", "*")]
+    public void OperButtonClick_SingleDigit_UpdatesDisplayCorrectly(string input, string expected)
+    {
+        SimulateOperatorClick(input);
+        Assert.That(_calculator.operationPerformed, Is.EqualTo(expected));
     }
 
     [Test]
-    public void operator_click_Vikhitanie_WhenFirstNumberIsNegative()
+    public void MultipleNumberButtonClicks_AppendsDigitsCorrectly()
     {
-        _form.textBox_Result.Text = "-9";
-        var button = new Button { Text = "-" };
+        SimulateButtonClick("1");
+        SimulateButtonClick("2");
+        SimulateButtonClick("3");
 
-        _form.operator_click(button, EventArgs.Empty);
-
-        Assert.That(_form.resultValue, Is.EqualTo(0));
-        Assert.That(_form.operationPerformed, Is.EqualTo("-"));
-        Assert.That(_form.isOperationPerformed);
+        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo("123"));
     }
 
     [Test]
-    public void operator_click_ShouldThrowArgumentException_WhenSecondNumberIsNegative()
+    public void MultipleNumberButtonClicksDel_AppendsDigitsCorrectly()
     {
-        _form.textBox_Result.Text = "0";
-        var button = new Button { Text = "*" };
+        SimulateButtonClick("4");
+        SimulateButtonClick("5");
+        SimulateButtonClick("6");
+        SimulateButtonClick("7");
 
-        _form.operator_click(button, EventArgs.Empty);
+        _calculator.button5_Click(_dummyButton, EventArgs.Empty);
 
-        Assert.That(_form.resultValue, Is.EqualTo(0));
-        Assert.That(_form.operationPerformed, Is.EqualTo("-"));
-        Assert.That(_form.isOperationPerformed);
+        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo("456"));
+    }
+
+
+
+    [Test]
+    public void DecimalPointInput_AddsDecimalOnce()
+    {
+        SimulateButtonClick("5");
+        SimulateButtonClick(",");
+        SimulateButtonClick("2");
+        SimulateButtonClick(",");
+
+        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo("5,2"));
+    }
+
+    [TestCase("5", "+", "3", "8")]
+    [TestCase("10", "-", "4", "6")]
+    [TestCase("7", "*", "3", "21")]
+    [TestCase("15", "/", "3", "5")]
+    [TestCase("0,6", "+", "0,09", "0,69")]
+    [TestCase("90", "-", "4,5", "85,5")]
+    [TestCase("1,5", "*", "3", "4,5")]
+    [TestCase("30", "/", "0,3", "100")]
+    public void BinaryOperations_CalculateCorrectResults(
+        string operand1, string operation, string operand2, string expected)
+    {
+        foreach (var c in operand1) SimulateButtonClick(c.ToString());
+
+        SimulateOperatorClick(operation);
+
+        foreach (var c in operand2) SimulateButtonClick(c.ToString());
+
+        _calculator.button15_Click(_dummyButton, EventArgs.Empty);
+
+        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo(expected));
+    }
+
+    [TestCase("30", "sin", "0,5")]
+    [TestCase("60", "cos", "0,5")]
+    [TestCase("90", "sin", "1")]
+    [TestCase("0", "cos", "1")]
+    public void TrigonometricFunctions_CalculateCorrectResults(
+        string angle, string function, string expected)
+    {
+        foreach (var c in angle) SimulateButtonClick(c.ToString());
+
+        SimulateOperatorClick(function);
+        _calculator.button15_Click(_dummyButton, EventArgs.Empty);
+
+        Assert.That(_calculator.textBox_Result.Text, Does.StartWith(expected));
     }
 
     [Test]
-    public void operator_click_ShouldReturnZero_WhenBothNumbersAreZero()
+    public void ClearEntryButton_ResetsDisplayButNotOperation()
     {
-        _form.textBox_Result.Text = "0";
-        var button = new Button { Text = "/" };
-        _form.textBox_Result.Text = "0";
+        SimulateButtonClick("9");
+        SimulateOperatorClick("+");
+        SimulateButtonClick("5");
 
-        _form.operator_click(button, EventArgs.Empty);
+        _calculator.button4_Click(_dummyButton, EventArgs.Empty);
 
-        Assert.That(_form.resultValue, Is.EqualTo(0));
-        Assert.That(_form.operationPerformed, Is.EqualTo("-"));
-        Assert.That(_form.isOperationPerformed);
+        Assert.Multiple(() =>
+        {
+            Assert.That(_calculator.textBox_Result.Text, Is.EqualTo("0"));
+            Assert.That(_calculator.resultValue, Is.EqualTo(9));
+            Assert.That(_calculator.operationPerformed, Is.EqualTo("+"));
+        });
     }
 
     [Test]
-    public void operator_click_ShouldReturnOne_Sinus()
+    public void ClearAllButton_ResetsCalculatorCompletely()
     {
-        _form.textBox_Result.Text = "90";
-        var button = new Button { Text = "sin" };
+        SimulateButtonClick("8");
+        SimulateOperatorClick("+");
+        SimulateButtonClick("2");
 
-        _form.operator_click(button, EventArgs.Empty);
+        _calculator.button5_Click(_dummyButton, EventArgs.Empty);
 
-        Assert.That(_form.resultValue, Is.EqualTo(1));
-        Assert.That(_form.operationPerformed, Is.EqualTo("sin"));
-        Assert.That(_form.isOperationPerformed);
+        Assert.Multiple(() =>
+        {
+            Assert.That(_calculator.textBox_Result.Text, Is.EqualTo("0"));
+            Assert.That(_calculator.resultValue, Is.EqualTo(0));
+            Assert.That(_calculator.operationPerformed, Is.Empty);
+            Assert.That(_calculator.isOperationPerformed, Is.False);
+        });
     }
 
     [Test]
-    public void operator_click_ShouldReturnOne_Cosinus()
+    public void OperationAfterEquals_ContinuesWithPreviousResult()
     {
-        _form.textBox_Result.Text = "0";
-        var button = new Button { Text = "cos" };
+        SimulateButtonClick("5");
+        SimulateOperatorClick("+");
+        SimulateButtonClick("3");
+        _calculator.button15_Click(_dummyButton, EventArgs.Empty);
 
-        _form.operator_click(button, EventArgs.Empty);
+        SimulateOperatorClick("+");
+        SimulateButtonClick("2");
+        _calculator.button15_Click(_dummyButton, EventArgs.Empty);
 
-        Assert.That(_form.resultValue, Is.EqualTo(1));
-        Assert.That(_form.operationPerformed, Is.EqualTo("cos"));
-        Assert.That(_form.isOperationPerformed);
+        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo("10"));
     }
+
+
+
+
 }

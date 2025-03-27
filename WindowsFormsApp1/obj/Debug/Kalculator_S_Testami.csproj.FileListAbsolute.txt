@@ -1,5 +1,4 @@
 C:\Users\PC\source\repos\Bag_Calculator\WindowsFormsApp1\obj\Debug\Kalculator_S_Testami.csproj.AssemblyReference.cache
-C:\Users\PC\source\repos\Bag_Calculator\WindowsFormsApp1\obj\Debug\Calculator.Form1.resources
 C:\Users\PC\source\repos\Bag_Calculator\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 C:\Users\PC\source\repos\Bag_Calculator\WindowsFormsApp1\obj\Debug\Kalculator_S_Testami.csproj.GenerateResource.cache
 C:\Users\PC\source\repos\Bag_Calculator\WindowsFormsApp1\obj\Debug\Kalculator_S_Testami.gentestingplatformentrypointinputcache.cache
@@ -132,3 +131,4 @@ C:\Users\PC\source\repos\Bag_Calculator\WindowsFormsApp1\bin\Debug\tr\Microsoft.
 C:\Users\PC\source\repos\Bag_Calculator\WindowsFormsApp1\bin\Debug\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
 C:\Users\PC\source\repos\Bag_Calculator\WindowsFormsApp1\bin\Debug\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
 C:\Users\PC\source\repos\Bag_Calculator\WindowsFormsApp1\obj\Debug\Kalculat.F7C78E31.Up2Date
+C:\Users\PC\source\repos\Bag_Calculator\WindowsFormsApp1\obj\Debug\form.Form1.resources

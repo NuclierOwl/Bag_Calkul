@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Calculator
+namespace form
 {
     public partial class Form1 : Form
     {
@@ -13,7 +13,7 @@ namespace Calculator
             InitializeComponent();
         }
 
-        private void button_click(object sender, EventArgs e)
+        public void button_click(object sender, EventArgs e)
         {
             if ((textBox_Result.Text == "0") || (isOperationPerformed))
                 textBox_Result.Clear();
@@ -50,18 +50,18 @@ namespace Calculator
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        public void button4_Click(object sender, EventArgs e)
         {
             textBox_Result.Text = "0";
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        public void button5_Click(object sender, EventArgs e)
         {
             textBox_Result.Text = "0";
             resultValue = 0;
         }
 
-        private void button15_Click(object sender, EventArgs e)
+        public void button15_Click(object sender, EventArgs e)
         {
             switch (operationPerformed)
             {
