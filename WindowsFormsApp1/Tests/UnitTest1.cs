@@ -76,6 +76,7 @@ public class CalculatorTests
         SimulateButtonClick(input);
         Assert.That(_calculator.textBox_Result.Text, Is.EqualTo(expected));
     }
+
     [TestCase("+", "+")]
     [TestCase("-", "-")]
     [TestCase("/", "/")]
@@ -97,7 +98,7 @@ public class CalculatorTests
     }
 
     [Test]
-    public void MultipleNumberButtonClicksDel_AppendsDigitsCorrectly()
+    public void ClearLastNumberButton_AppendsDigitsCorrectly()
     {
         SimulateButtonClick("4");
         SimulateButtonClick("5");
