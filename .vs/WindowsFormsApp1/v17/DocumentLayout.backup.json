@@ -93,7 +93,11 @@
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Tests\\UnitTest1.cs",
               "ToolTip": "C:\\Users\\PC\\source\\repos\\Bag_Calculator\\WindowsFormsApp1\\Tests\\UnitTest1.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Tests\\UnitTest1.cs",
+<<<<<<< HEAD
               "ViewState": "AgIAAEsAAAAAAAAAAAAAAFgAAAAFAAAAAAAAAA==",
+=======
+              "ViewState": "AgIAAC8AAAAAAAAAAAAAAA4AAAA6AAAAAAAAAA==",
+>>>>>>> 7197831 (Pravki)
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-27T07:04:04.734Z",
               "EditorCaption": ""
@@ -108,8 +112,7 @@
               "RelativeToolTip": "WindowsFormsApp1\\Form1.cs",
               "ViewState": "AgIAAE0AAAAAAAAAAAAAAF8AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T06:15:31.627Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-27T06:15:31.627Z"
             },
             {
               "$type": "Document",
