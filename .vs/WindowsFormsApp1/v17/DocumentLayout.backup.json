@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\PC\\source\\repos\\Bag_Calculator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{901D96B5-FF85-4850-9E36-B58C38DC061B}|WindowsFormsApp1\\Kalculator_S_Testami.csproj|c:\\users\\pc\\source\\repos\\bag_calculator\\windowsformsapp1\\tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{901D96B5-FF85-4850-9E36-B58C38DC061B}|WindowsFormsApp1\\Kalculator_S_Testami.csproj|C:\\Users\\PC\\source\\repos\\Bag_Calculator\\windowsformsapp1\\tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{901D96B5-FF85-4850-9E36-B58C38DC061B}|WindowsFormsApp1\\Kalculator_S_Testami.csproj|solutionrelative:windowsformsapp1\\tests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{901D96B5-FF85-4850-9E36-B58C38DC061B}|WindowsFormsApp1\\Kalculator_S_Testami.csproj|C:\\Users\\PC\\source\\repos\\Bag_Calculator\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{901D96B5-FF85-4850-9E36-B58C38DC061B}|WindowsFormsApp1\\Kalculator_S_Testami.csproj|c:\\users\\pc\\source\\repos\\bag_calculator\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{901D96B5-FF85-4850-9E36-B58C38DC061B}|WindowsFormsApp1\\Kalculator_S_Testami.csproj|solutionrelative:windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -80,7 +80,7 @@
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form1.Designer.cs",
               "ToolTip": "C:\\Users\\PC\\source\\repos\\Bag_Calculator\\WindowsFormsApp1\\Form1.Designer.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form1.Designer.cs",
-              "ViewState": "AgIAAMgAAAAAAAAAAAAhwNkAAABOAAAAAAAAAA==",
+              "ViewState": "AgIAAFgBAAAAAAAAAAAhwGcBAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-27T10:01:47.433Z"
             },
@@ -90,9 +90,9 @@
               "Title": "UnitTest1.cs",
               "DocumentMoniker": "C:\\Users\\PC\\source\\repos\\Bag_Calculator\\WindowsFormsApp1\\Tests\\UnitTest1.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Tests\\UnitTest1.cs",
-              "ToolTip": "C:\\Users\\PC\\source\\repos\\Bag_Calculator\\WindowsFormsApp1\\Tests\\UnitTest1.cs*",
-              "RelativeToolTip": "WindowsFormsApp1\\Tests\\UnitTest1.cs*",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAAAGQAAAAfAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\PC\\source\\repos\\Bag_Calculator\\WindowsFormsApp1\\Tests\\UnitTest1.cs",
+              "RelativeToolTip": "WindowsFormsApp1\\Tests\\UnitTest1.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAAAGIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-27T07:04:04.734Z",
               "EditorCaption": ""
@@ -105,9 +105,10 @@
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form1.cs",
               "ToolTip": "C:\\Users\\PC\\source\\repos\\Bag_Calculator\\WindowsFormsApp1\\Form1.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form1.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAAD8AAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAEMAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T06:15:31.627Z"
+              "WhenOpened": "2025-03-27T06:15:31.627Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

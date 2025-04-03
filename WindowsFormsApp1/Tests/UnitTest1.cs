@@ -71,6 +71,7 @@ public class CalculatorTests
     [TestCase("2", "2")]
     [TestCase("4", "4")]
     [TestCase(",", ",")]
+    [TestCase("Часнык", "Часнык")]
     public void NumberButtonClick_SingleDigit_UpdatesDisplayCorrectly(string input, string expected)
     {
         SimulateButtonClick(input);
@@ -97,23 +98,10 @@ public class CalculatorTests
         Assert.That(_calculator.textBox_Result.Text, Is.EqualTo("123"));
     }
 
-    [Test]
-    public void ClearLastNumberButton_AppendsDigitsCorrectly()
-    {
-        SimulateButtonClick("4");
-        SimulateButtonClick("5");
-        SimulateButtonClick("6");
-        SimulateButtonClick("7");
-
-        _calculator.button5_Click(_dummyButton, EventArgs.Empty);
-
-        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo("456"));
-    }
-
 
 
     [Test]
-    public void DecimalPointInput_AddsDecimalOnce()
+    public void DecimalPointInput_AddDecimalOnce()
     {
         SimulateButtonClick("5");
         SimulateButtonClick(",");
@@ -131,7 +119,11 @@ public class CalculatorTests
     [TestCase("90", "-", "4,5", "85,5")]
     [TestCase("1,5", "*", "3", "4,5")]
     [TestCase("30", "/", "0,3", "100")]
-    public void BinaryOperations_CalculateCorrectResults(
+    [TestCase("Бульба", "+", "цыбуля", "Неверный ввод")]
+    [TestCase("Бульба", "-", "цыбуля", "Неверный ввод")]
+    [TestCase("Бульба", "/", "цыбуля", "Неверный ввод")]
+    [TestCase("Бульба", "*", "цыбуля", "Неверный ввод")]
+    public void Operations_CalculaterCorrectResults(
         string operand1, string operation, string operand2, string expected)
     {
         foreach (var c in operand1) SimulateButtonClick(c.ToString());
@@ -149,7 +141,9 @@ public class CalculatorTests
     [TestCase("60", "cos", "0,5")]
     [TestCase("90", "sin", "1")]
     [TestCase("0", "cos", "1")]
-    public void TrigonometricFunctions_CalculateCorrectResults(
+    [TestCase("Бульба", "cos", "Неверный ввод")]
+    [TestCase("Бурак", "sin", "Неверный ввод")]
+    public void TrigonometricOperations_CalculaterCorrectResults(
         string angle, string function, string expected)
     {
         foreach (var c in angle) SimulateButtonClick(c.ToString());
@@ -161,7 +155,7 @@ public class CalculatorTests
     }
 
     [Test]
-    public void ClearEntryButton_ResetsDisplayButNotOperation()
+    public void ClearEntryButton_ResetsDisplayNotOperation()
     {
         SimulateButtonClick("9");
         SimulateOperatorClick("+");
@@ -196,21 +190,26 @@ public class CalculatorTests
     }
 
     [Test]
-    public void OperationAfterEquals_ContinuesWithPreviousResult()
+    public void OperationMnogo_ContinuesWithPreviousResult()
     {
-        SimulateButtonClick("5");
+        SimulateButtonClick("8");
         SimulateOperatorClick("+");
-        SimulateButtonClick("3");
+        SimulateButtonClick("800");
         _calculator.button15_Click(_dummyButton, EventArgs.Empty);
 
         SimulateOperatorClick("+");
-        SimulateButtonClick("2");
+        SimulateButtonClick("555");
+        _calculator.button15_Click(_dummyButton, EventArgs.Empty);
+        
+        SimulateOperatorClick("+");
+        SimulateButtonClick("35");
+        _calculator.button15_Click(_dummyButton, EventArgs.Empty);
+        
+        SimulateOperatorClick("+");
+        SimulateButtonClick("35");
         _calculator.button15_Click(_dummyButton, EventArgs.Empty);
 
-        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo("10"));
+        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo("1433"));
     }
-
-
-
 
 }

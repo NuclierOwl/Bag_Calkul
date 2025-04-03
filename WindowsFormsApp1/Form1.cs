@@ -24,7 +24,6 @@ namespace form
             {
                 if (!textBox_Result.Text.Contains(","))
                     textBox_Result.Text = textBox_Result.Text + button.Text;
-
             }
             else
                 textBox_Result.Text = textBox_Result.Text + button.Text;
@@ -33,6 +32,13 @@ namespace form
         public void operator_click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            double currentValue;
+
+            if (!double.TryParse(textBox_Result.Text, out currentValue))
+            {
+                textBox_Result.Text = "Неверный ввод";
+                return;
+            }
 
             if (resultValue != 0)
             {
@@ -44,7 +50,7 @@ namespace form
             else
             {
                 operationPerformed = button.Text;
-                resultValue = Double.Parse(textBox_Result.Text);
+                resultValue = currentValue;
                 labelCurrentOperation.Text = resultValue + " " + operationPerformed;
                 isOperationPerformed = true;
             }
@@ -59,35 +65,55 @@ namespace form
         {
             textBox_Result.Text = "0";
             resultValue = 0;
+            operationPerformed = "";
+            labelCurrentOperation.Text = "";
         }
 
         public void button15_Click(object sender, EventArgs e)
         {
+            double currentValue;
+            if (!double.TryParse(textBox_Result.Text, out currentValue))
+            {
+                textBox_Result.Text = "Неверный ввод";
+                labelCurrentOperation.Text = "";
+                return;
+            }
+
             switch (operationPerformed)
             {
                 case "+":
-                    textBox_Result.Text = (resultValue + Double.Parse(textBox_Result.Text)).ToString();
+                    textBox_Result.Text = (resultValue + currentValue).ToString();
                     break;
                 case "-":
-                    textBox_Result.Text = (resultValue - Double.Parse(textBox_Result.Text)).ToString();
+                    textBox_Result.Text = (resultValue - currentValue).ToString();
                     break;
                 case "*":
-                    textBox_Result.Text = (resultValue * Double.Parse(textBox_Result.Text)).ToString();
+                    textBox_Result.Text = (resultValue * currentValue).ToString();
                     break;
                 case "/":
-                    textBox_Result.Text = (resultValue / Double.Parse(textBox_Result.Text)).ToString();
+                    if (currentValue == 0)
+                    {
+                        textBox_Result.Text = "Деление на 0";
+                    }
+                    else
+                    {
+                        textBox_Result.Text = (resultValue / currentValue).ToString();
+                    }
                     break;
                 case "sin":
-                    textBox_Result.Text = (Math.Sin(Double.Parse(textBox_Result.Text) * Math.PI / 180)).ToString();
+                    textBox_Result.Text = Math.Sin(currentValue * Math.PI / 180).ToString();
                     break;
                 case "cos":
-                    textBox_Result.Text = (Math.Cos(Double.Parse(textBox_Result.Text) * Math.PI / 180)).ToString();
+                    textBox_Result.Text = Math.Cos(currentValue * Math.PI / 180).ToString();
                     break;
                 default:
                     break;
             }
-            resultValue = Double.Parse(textBox_Result.Text);
-            labelCurrentOperation.Text = "";
+
+            if (double.TryParse(textBox_Result.Text, out resultValue))
+            {
+                labelCurrentOperation.Text = "";
+            }
         }
     }
 }
