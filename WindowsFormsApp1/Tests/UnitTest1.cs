@@ -199,19 +199,19 @@ public class CalculatorTests
         SimulateButtonClick("800");
         _calculator.button15_Click(_dummyButton, EventArgs.Empty);
 
-        SimulateOperatorClick("+");
+        SimulateOperatorClick("/");
         SimulateButtonClick("555");
         _calculator.button15_Click(_dummyButton, EventArgs.Empty);
         
-        SimulateOperatorClick("+");
+        SimulateOperatorClick("*");
         SimulateButtonClick("35");
         _calculator.button15_Click(_dummyButton, EventArgs.Empty);
         
-        SimulateOperatorClick("+");
+        SimulateOperatorClick("-");
         SimulateButtonClick("35");
         _calculator.button15_Click(_dummyButton, EventArgs.Empty);
 
-        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo("1433"));
+        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo("15,9549549549551"));
     }
 
 }
