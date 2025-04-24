@@ -119,22 +119,24 @@ public class CalculatorTests
     [TestCase("90", "-", "4,5", "85,5")]
     [TestCase("1,5", "*", "3", "4,5")]
     [TestCase("30", "/", "0,3", "100")]
+    [TestCase("0", "/", "0,3", "0")]
+    [TestCase("30", "/", "0", "Деление на 0")]
     [TestCase("Бульба", "+", "цыбуля", "Неверный ввод")]
     [TestCase("Бульба", "-", "цыбуля", "Неверный ввод")]
     [TestCase("Бульба", "/", "цыбуля", "Неверный ввод")]
     [TestCase("Бульба", "*", "цыбуля", "Неверный ввод")]
     public void Operations_CalculaterCorrectResults(
-        string operand1, string operation, string operand2, string expected)
+        string oper1, string operation, string oper2, string exp)
     {
-        foreach (var c in operand1) SimulateButtonClick(c.ToString());
+        foreach (var c in oper1) SimulateButtonClick(c.ToString());
 
         SimulateOperatorClick(operation);
 
-        foreach (var c in operand2) SimulateButtonClick(c.ToString());
+        foreach (var c in oper2) SimulateButtonClick(c.ToString());
 
         _calculator.button15_Click(_dummyButton, EventArgs.Empty);
 
-        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo(expected));
+        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo(exp));
     }
 
     [TestCase("30", "sin", "0,5")]
@@ -144,14 +146,14 @@ public class CalculatorTests
     [TestCase("Бульба", "cos", "Неверный ввод")]
     [TestCase("Бурак", "sin", "Неверный ввод")]
     public void TrigonometricOperations_CalculaterCorrectResults(
-        string angle, string function, string expected)
+        string a, string function, string exp)
     {
-        foreach (var c in angle) SimulateButtonClick(c.ToString());
+        foreach (var c in a) SimulateButtonClick(c.ToString());
 
         SimulateOperatorClick(function);
         _calculator.button15_Click(_dummyButton, EventArgs.Empty);
 
-        Assert.That(_calculator.textBox_Result.Text, Does.StartWith(expected));
+        Assert.That(_calculator.textBox_Result.Text, Does.StartWith(exp));
     }
 
     [Test]

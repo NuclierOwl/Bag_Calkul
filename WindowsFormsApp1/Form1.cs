@@ -13,7 +13,7 @@ namespace form
             InitializeComponent();
         }
 
-        public void button_click(object sender, EventArgs e)
+        public void button_click(object sender, EventArgs e) // работа с запятой
         {
             if ((textBox_Result.Text == "0") || (isOperationPerformed))
                 textBox_Result.Clear();
@@ -29,7 +29,7 @@ namespace form
                 textBox_Result.Text = textBox_Result.Text + button.Text;
         }
 
-        public void operator_click(object sender, EventArgs e)
+        public void operator_click(object sender, EventArgs e) 
         {
             Button button = (Button)sender;
             double currentValue;
@@ -56,12 +56,12 @@ namespace form
             }
         }
 
-        public void button4_Click(object sender, EventArgs e)
+        public void button4_Click(object sender, EventArgs e) // очистка поля ввода
         {
             textBox_Result.Text = "0";
         }
 
-        public void button5_Click(object sender, EventArgs e)
+        public void button5_Click(object sender, EventArgs e) // очистка поля ввода + операторы
         {
             textBox_Result.Text = "0";
             resultValue = 0;
@@ -69,7 +69,7 @@ namespace form
             labelCurrentOperation.Text = "";
         }
 
-        public void button15_Click(object sender, EventArgs e)
+        public void button15_Click(object sender, EventArgs e) // осуществление операций
         {
             double currentValue;
             if (!double.TryParse(textBox_Result.Text, out currentValue))
