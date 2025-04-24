@@ -82,8 +82,7 @@
               "RelativeToolTip": "WindowsFormsApp1\\Form1.Designer.cs",
               "ViewState": "AgIAAFgBAAAAAAAAAAAhwGcBAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T10:01:47.433Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-27T10:01:47.433Z"
             },
             {
               "$type": "Document",
@@ -93,15 +92,7 @@
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Tests\\UnitTest1.cs",
               "ToolTip": "C:\\Users\\PC\\source\\repos\\Bag_Calculator\\WindowsFormsApp1\\Tests\\UnitTest1.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Tests\\UnitTest1.cs",
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAFgAAAAFAAAAAAAAAA==",
-=======
-              "ViewState": "AgIAAC8AAAAAAAAAAAAAAA4AAAA6AAAAAAAAAA==",
->>>>>>> 7197831 (Pravki)
-=======
-              "ViewState": "AgIAABYAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
->>>>>>> 1161296 (Pravki)
+              "ViewState": "AgIAAKQAAAAAAAAAAAAAAEwAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-27T07:04:04.734Z",
               "EditorCaption": ""
@@ -114,11 +105,7 @@
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form1.cs",
               "ToolTip": "C:\\Users\\PC\\source\\repos\\Bag_Calculator\\WindowsFormsApp1\\Form1.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form1.cs",
-<<<<<<< HEAD
               "ViewState": "AgIAAE0AAAAAAAAAAAAAAF8AAAA7AAAAAAAAAA==",
-=======
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
->>>>>>> 1161296 (Pravki)
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-27T06:15:31.627Z"
             },

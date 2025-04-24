@@ -72,10 +72,10 @@ public class CalculatorTests
     [TestCase("4", "4")]
     [TestCase(",", ",")]
     [TestCase("Часнык", "Часнык")]
-    public void NumberButtonClick_SingleDigit_UpdatesDisplayCorrectly(string input, string expected)
+    public void NumberButtonClick_SingleDigit_UpdatesDisplayCorrectly(string input, string exp)
     {
         SimulateButtonClick(input);
-        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo(expected));
+        Assert.That(_calculator.textBox_Result.Text, Is.EqualTo(exp));
     }
 
     [TestCase("+", "+")]
